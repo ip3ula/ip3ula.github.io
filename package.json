@@ -1,16 +1,17 @@
 {
-  "name": "personal-website",
   "homepage": "https://ip3ula.github.io/",
+  "name": "personal-website",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
+    
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
