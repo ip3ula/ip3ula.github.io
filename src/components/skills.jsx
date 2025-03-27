@@ -1,7 +1,7 @@
 const Skill = ({ icon, title, skills }) => {
     return (
         <div id="skills" className="group text-white w-50 h-100 bg-stone-900 p-6 rounded shadow-2xl shadow-stone-400">
-            <svg className="size-30 block mx-auto  text-yellow-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+            <svg className="size-30 block mx-auto  text-stone-700 group-hover:text-yellow-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
                 {icon}
             </svg>
             <p className="text-3xl text-center mt-5 font-bold">{title}</p>

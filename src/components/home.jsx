@@ -4,7 +4,7 @@ import { faTerminal } from "@fortawesome/free-solid-svg-icons";
 const Home = () => {
     return (
         <div id="home" className="font-bold p-6 bg-stone-900 min-h-screen flex flex-col justify-center items-center text-center">
-            <p className="text-yellow-300 font-extrabold text-5xl md:text-6xl lg:text-7xl font-serif leading-tight">
+            <p className="text-white underline font-extrabold text-5xl md:text-6xl lg:text-7xl font-serif leading-tight">
                 Hi, I'm Paula
             </p>
             <p className="text-gray-200 text-xl md:text-2xl lg:text-3xl max-w-2xl mt-5">
@@ -26,7 +26,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className="mt-20 text-5xl text-yellow-300">
+            <div className="mt-20 text-5xl text-white">
                 <FontAwesomeIcon icon={faTerminal} />
             </div>
         </div>
