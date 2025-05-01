@@ -1,6 +1,6 @@
 # 🌐 My Static Website
 
-This is a simple and responsive static website built using **React** and **Tailwind CSS**. It showcases [brief description: e.g., a personal portfolio / a landing page / a bookstore frontend].
+This is a simple and responsive static website built using **React** and **Tailwind CSS**
 
 ---
 
