@@ -23,4 +23,6 @@ This is a simple and responsive static website built using **React** and **Tailw
 
 ### 1. Clone the Repository
 git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+cd personal-website
+### 2. npm install
+### 3. npm run dev
