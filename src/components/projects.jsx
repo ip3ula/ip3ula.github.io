@@ -15,16 +15,16 @@ const Project = ({ name, description, photo, project, code }) => {
         <p>{description}</p>
       </div>
 
-      <div className="flex justify-between row-span-1">
-        <button
+      <div className={`flex  ${project? "justify-between" : "justify-center"} row-span-1`}>
+        <button 
           onClick={() => window.open(project, "_blank")}
-          className="bg-stone-800 text-white px-2 py-2 rounded-lg mt-4 w-[27vw] max-w-30 sm:text-xs text-sm hover:bg-yellow-300 hover:text-stone-950"
+          className={`bg-stone-800 text-white px-2 py-2 rounded-lg mt-4 w-[60%]  sm:text-xs text-sm hover:bg-yellow-300 hover:text-stone-950 ${project ? "max-w-30" : "hidden"}`}
         >
           View Project
         </button>
         <button
           onClick={() => window.open(code, "_blank")}
-          className="bg-stone-800 text-white px-2 py-2 rounded-lg mt-4 ml-4 w-[27vw] max-w-30 sm:text-xs text-sm hover:bg-yellow-300 hover:text-stone-950"
+          className={`bg-stone-800 text-white px-2 py-2 rounded-lg mt-4 ml-4 w-[60%]  sm:text-xs text-sm hover:bg-yellow-300 hover:text-stone-950 ${project ? "max-w-30" : "w-full mr-4"}`}
         >
           View Code
         </button>
