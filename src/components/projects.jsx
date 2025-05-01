@@ -1,11 +1,13 @@
 import { useRef } from "react";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const Project = ({ name, description, photo, project, code }) => {
   return (
-    <div id="projects" className="bg-cover bg-stone-950 p-8 rounded-4xl shadow-md w-[75vw] max-w-80 h-120 grid grid-rows-7 flex-shrink-0">
+    <div id="projects" className="bg-cover bg-stone-950 p-8 rounded-4xl shadow-md w-[75vw] max-w-80 h-120 grid grid-rows-7 flex-shrink-0 group">
       <div
-        className="bg-cover w-[55vw] max-w-60 h-40 border border-yellow-300 rounded row-span-3 mx-auto"
-        style={{ backgroundImage: `url(/${photo})` }}
+        className="bg-cover w-[55vw] max-w-60 h-40 border border-yellow-300 rounded row-span-3 mx-auto group-hover:scale-110 transition-transform duration-300" 
+        style={{ backgroundImage: `url(${photo})` }}
       ></div>
 
       <div className="row-span-3">
@@ -34,6 +36,13 @@ const Project = ({ name, description, photo, project, code }) => {
 const Projects = () => {
   const scrollRef = useRef(null);
 
+  const projectsQuery = useQuery({
+    queryKey: ["projects"],
+    queryFn: async () => {
+      const response = await axios.get("https://api.github.com/users/ip3ula/repos")
+      return response.data
+    }})
+
   const scrollRight = () => {
     if (scrollRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
@@ -45,7 +54,30 @@ const Projects = () => {
       }
     }
   };
+
+  if(projectsQuery.isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <svg
+          className="animate-spin h-10 w-10 text-yellow-300"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+          <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 1 1 16 0A8 8 0 0 1 4 12zm2.5-1.5h11a2.5 2.5 0 1 1-11 0z"
+          ></path>
+        </svg>
+      </div>
+    );
+  }
   
+  const projects = projectsQuery.data.filter(project => !project.name.includes('course') && !project.name.includes('full-stack-open')).sort((a,b) => b.stargazers_count - a.stargazers_count) || [];
 
   return (
     <div className="p-8 pt-13 relative">
@@ -71,27 +103,16 @@ const Projects = () => {
         ref={scrollRef}
         className="flex gap-4 mt-15 text-white overflow-x-auto scroll-smooth"
       >
-        <Project
-          name="Tic Tac Toe Game"
-          description="A simple Tic-Tac-Toe game where two players take turns, with win detection and a reset option."
-          photo="tictactoe.png"
-          project="https://ip3ula.github.io/tictactoe/"
-          code="https://github.com/ip3ula/tictactoe"
-        />
-        <Project
-          name="Calculator App"
-          description="A simple and user-friendly calculator website for quick and accurate calculations."
-          photo="calculator.png"
-          project="https://ip3ula.github.io/Calculator/"
-          code="https://github.com/ip3ula/Calculator"
-        />
-        <Project
-          name="Blog App"
-          description="A simple blog app where users can create, read, update, and delete blog posts."
-          photo="blog.png"
-          project=""
-          code="https://github.com/ip3ula/blog"
-        />
+        {projects.map((project) => (
+          <Project
+            key={project.id}
+            name={project.name}
+            description={project.description}
+            photo={`https://raw.githubusercontent.com/ip3ula/${project.name}/main/public/screenshot.png`}
+            project={project.homepage}
+            code={project.html_url}
+          />
+        ))}
       </div>
     </div>
   );

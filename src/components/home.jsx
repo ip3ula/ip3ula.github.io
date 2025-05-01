@@ -3,7 +3,7 @@ import { faTerminal } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
     return (
-        <div id="home" className="font-bold p-6 bg-stone-950 min-h-screen flex flex-col justify-center items-center text-center">
+        <div id="home" className="font-bold p-6 bg-stone-950 min-h-screen flex flex-col justify-center items-center text-center py-20">
             <p className="text-white underline font-extrabold text-5xl md:text-6xl lg:text-7xl font-serif leading-tight">
                 Hi, I'm Paula
             </p>

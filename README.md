@@ -1,4 +1,4 @@
-# 🌐 My Static Website
+# 🌐 My Personal Website
 
 This is a simple and responsive static website built using **React** and **Tailwind CSS**
 
@@ -23,6 +23,6 @@ This is a simple and responsive static website built using **React** and **Tailw
 
 ### 1. Clone the Repository
 git clone https://github.com/your-username/your-repo-name.git
-cd personal-website
-### 2. npm install
-### 3. npm run dev
+### 2.cd your-repo-name
+### 3. npm install
+### 4. npm run dev
